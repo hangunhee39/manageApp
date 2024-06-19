@@ -2,11 +2,11 @@ package com.hgh.ttoklip_manger.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
-val MainPurple900   = Color(0xFF6671F6)
-val MainPurple700   = Color(0xFF858DF8)
+val MainPurple900   = Color(0xFFFFE600)
+val MainPurple700   = Color(0xFFFFF8B4)
 val MainPurple500   = Color(0xFFB2B8FA)
-val MainPurple300   = Color(0xFFE0E3FD)
-val MainPurple200   = Color(0xFFE8EAFE)
+val MainPurple300   = Color(0xFF0075FF)
+val MainPurple200   = Color(0xFFFE5E00)
 
 val Gray900 = Color(0XFF020202)
 val Gray800 = Color(0XFF2D3038)
