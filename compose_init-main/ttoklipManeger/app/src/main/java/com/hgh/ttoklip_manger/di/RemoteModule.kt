@@ -1,5 +1,9 @@
 package com.hgh.ttoklip_manger.di
 
+import com.hgh.ttoklip_manger.MainApplication
+import com.hgh.ttoklip_manger.R
+import com.hgh.ttoklip_manger.data.source.remote.api.NewsService
+import com.hgh.ttoklip_manger.data.source.remote.api.NoticeService
 import com.hgh.ttoklip_manger.data.utill.HttpRequestInterceptor
 import dagger.Module
 import dagger.Provides
@@ -26,7 +30,7 @@ object RemoteModule {
 
         return Retrofit.Builder()
             .client(okHttpClient)
-            //.baseUrl("")
+            .baseUrl(MainApplication.getString(R.string.base_url))
             .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -49,5 +53,21 @@ object RemoteModule {
             .addInterceptor(authInterceptor)
             .retryOnConnectionFailure(false)
             .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideNewsApi(retrofit: Retrofit): NewsService {
+        return retrofit.buildService()
+    }
+
+    @Provides
+    @Singleton
+    fun provideNoticeApi(retrofit: Retrofit): NoticeService {
+        return retrofit.buildService()
+    }
+
+    private inline fun <reified T> Retrofit.buildService(): T {
+        return this.create(T::class.java)
     }
 }

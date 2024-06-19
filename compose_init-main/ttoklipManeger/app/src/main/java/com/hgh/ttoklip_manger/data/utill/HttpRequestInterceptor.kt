@@ -1,13 +1,15 @@
 package com.hgh.ttoklip_manger.data.utill
 
 import android.util.Log
+import com.hgh.ttoklip_manger.MainApplication
+import com.hgh.ttoklip_manger.R
 import okhttp3.Interceptor
 import okhttp3.Response
 
 class HttpRequestInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response  {
         try {
-            val token = ("Bearer " + "JWT tokwn")
+            val token = ("Bearer " + MainApplication.getString(R.string.manager_jwt))
             val originRequest = chain.request().newBuilder()
                 .addHeader("Authorization", token)
                 .build()
