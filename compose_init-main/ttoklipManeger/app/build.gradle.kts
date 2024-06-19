@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.hgh.samplecompose"
+    namespace = "com.hgh.ttoklip_manger"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.hgh.samplecompose"
+        applicationId = "com.hgh.ttoklip_manger"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

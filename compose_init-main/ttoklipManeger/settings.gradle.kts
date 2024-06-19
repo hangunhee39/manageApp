@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "sampleCompose"
+rootProject.name = "ttoklipManger"
 include(":app")
  
