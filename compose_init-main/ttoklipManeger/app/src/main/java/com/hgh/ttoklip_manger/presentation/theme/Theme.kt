@@ -8,12 +8,13 @@ import androidx.compose.ui.graphics.Color
 
 
 private val ColorPalette = lightColorScheme(
-    primary = MainPurple900,
-    primaryContainer = MainPurple300,
+    onPrimary = BackgroundColor3,
+    primary = MainPurple700,
+    primaryContainer = BackgroundColor3,
     background = Color.White,
     onBackground = Color.Black,
     surface = Color.White,
-    onSurface = Color.Black
+    onSurface = Color.Black,
 
     /* Other default colors to override
     background = Color.White,

@@ -13,7 +13,13 @@ enum class AppBarMenu(
 ) {
     BACK(
         horizontalPadding = 20.dp,
-        icon = R.drawable.ic_launcher_foreground,
+        icon = R.drawable.ic_exit_24,
         contentDescription = R.string.back_description,
+    ),
+
+    CREATE(
+        horizontalPadding = 20.dp,
+        icon = R.drawable.ic_create,
+        contentDescription = R.string.create_description,
     ),
 }
