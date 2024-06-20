@@ -22,6 +22,37 @@ import com.hgh.ttoklip_manger.presentation.theme.Gray900
 import com.hgh.ttoklip_manger.presentation.theme.PlanzTypography
 
 @Composable
+fun CreateAppBar(
+    modifier: Modifier = Modifier,
+    title: String,
+    onCreateClick: () -> Unit,
+) {
+    MainAppBar(
+        modifier = modifier,
+        title = title,
+        back = null,
+        menu = AppBarMenu.CREATE,
+        onMenuClick = onCreateClick,
+        onBackClick = { },
+    )
+}
+
+@Composable
+fun BackAppBar(
+    modifier: Modifier = Modifier,
+    title: String,
+    onExitClick: () -> Unit,
+) {
+    MainAppBar(
+        modifier = modifier,
+        title = title,
+        menu = AppBarMenu.BACK,
+        onMenuClick = onExitClick,
+        onBackClick = { },
+    )
+}
+
+@Composable
 private fun MainAppBar(
     modifier: Modifier = Modifier,
     title: String,

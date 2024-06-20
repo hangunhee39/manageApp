@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">똑립관리자</string>
     <string name="back_description">뒤로가기</string>
+    <string name="create_description">생성하기</string>
+    <string name="news">뉴스</string>
+    <string name="notice">공지</string>
+    <string name="error_tex">오류가 발생했습니다.(T_T)</string>
+    <string name="retry_button_title">돌아가기</string>
 </resources>
