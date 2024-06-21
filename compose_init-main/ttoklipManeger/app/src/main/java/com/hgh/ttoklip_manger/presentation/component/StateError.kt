@@ -52,14 +52,16 @@ fun StateError(
                 Button(
                     modifier = Modifier
                         .wrapContentWidth()
-                        .height(34.dp),
+                        .height(30.dp),
                     border = BorderStroke(width = 1.dp, color = MainPurple900),
                     shape = RoundedCornerShape(7.dp),
                     colors = ButtonDefaults.outlinedButtonColors(contentColor = MainPurple900),
                     onClick = { onClickRetry() },
+                    contentPadding = PaddingValues(horizontal = 10.dp, vertical = 4.dp),
                     elevation = null,
                 ) {
                     Row(
+                        verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.spacedBy(4.dp),
                     ) {
                         Icon(

@@ -6,4 +6,9 @@
     <string name="notice">공지</string>
     <string name="error_tex">오류가 발생했습니다.(T_T)</string>
     <string name="retry_button_title">돌아가기</string>
+    <string name="news_manager">뉴스 관리하기</string>
+    <string name="safe_life">안전한생활</string>
+    <string name="recipe">레시피</string>
+    <string name="house_work">집안일</string>
+    <string name="welfare">복지・정책</string>
 </resources>

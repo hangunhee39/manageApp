@@ -61,6 +61,7 @@ import com.hgh.ttoklip_manger.presentation.theme.BackgroundColor1
 import com.hgh.ttoklip_manger.presentation.theme.Gray500
 import com.hgh.ttoklip_manger.presentation.theme.Gray900
 import com.hgh.ttoklip_manger.presentation.theme.Pretendard
+import com.hgh.ttoklip_manger.presentation.ui.main.news.NewsScreen
 import kotlinx.coroutines.launch
 
 
@@ -113,7 +114,13 @@ fun TtoklipScreen(
             startDestination = TtoklipScreenRoute.NEWS.route
         ) {
             composable(route = TtoklipScreenRoute.NEWS.route) {
-                Text(text = "뉴스")
+                NewsScreen(
+                    navigateToCreateNewsScreen = { _ ->
+
+                    },
+                    showBottomSheet = {
+
+                    })
             }
 
             composable(route = TtoklipScreenRoute.NOTICE.route) {

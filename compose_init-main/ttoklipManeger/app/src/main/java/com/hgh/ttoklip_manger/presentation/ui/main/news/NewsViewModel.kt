@@ -16,6 +16,7 @@ class NewsViewModel @Inject constructor(
             is NewsContract.NewsEvent.InitHomeScreen -> {
                 updateState { NewsContract.NewsViewState(LoadState.LOADING) }
                 // 뉴스 메인 호출
+                updateState { NewsContract.NewsViewState(LoadState.SUCCESS) }
             }
             else -> {
 
