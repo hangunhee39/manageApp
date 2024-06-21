@@ -16,6 +16,6 @@ class NewsContract {
     }
 
     sealed class NewsEvent : ViewEvent {
-        object InitHomeScreen : NewsEvent()
+        object InitNewsScreen : NewsEvent()
     }
 }

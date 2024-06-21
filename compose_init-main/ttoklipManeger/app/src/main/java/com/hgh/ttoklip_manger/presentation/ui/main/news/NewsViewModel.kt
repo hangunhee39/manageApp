@@ -13,10 +13,10 @@ class NewsViewModel @Inject constructor(
 ) {
     override fun handleEvents(event: NewsContract.NewsEvent) {
         when (event) {
-            is NewsContract.NewsEvent.InitHomeScreen -> {
-                updateState { NewsContract.NewsViewState(LoadState.LOADING) }
+            is NewsContract.NewsEvent.InitNewsScreen -> {
+                updateState { copy(loadState = LoadState.LOADING) }
                 // 뉴스 메인 호출
-                updateState { NewsContract.NewsViewState(LoadState.SUCCESS) }
+                updateState { copy(loadState = LoadState.SUCCESS) }
             }
             else -> {
 

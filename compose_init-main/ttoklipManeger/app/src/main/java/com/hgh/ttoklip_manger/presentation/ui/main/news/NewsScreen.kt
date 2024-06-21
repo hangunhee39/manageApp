@@ -53,7 +53,7 @@ fun NewsScreen(
     val coroutineScope = rememberCoroutineScope()
 
     LaunchedEffect(key1 = true) {
-        viewModel.setEvent(NewsContract.NewsEvent.InitHomeScreen)
+        viewModel.setEvent(NewsContract.NewsEvent.InitNewsScreen)
     }
 
     when (viewState.loadState) {

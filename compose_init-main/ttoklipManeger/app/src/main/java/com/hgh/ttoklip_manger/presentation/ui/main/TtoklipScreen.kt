@@ -62,6 +62,7 @@ import com.hgh.ttoklip_manger.presentation.theme.Gray500
 import com.hgh.ttoklip_manger.presentation.theme.Gray900
 import com.hgh.ttoklip_manger.presentation.theme.Pretendard
 import com.hgh.ttoklip_manger.presentation.ui.main.news.NewsScreen
+import com.hgh.ttoklip_manger.presentation.ui.main.notice.NoticeScreen
 import kotlinx.coroutines.launch
 
 
@@ -124,7 +125,14 @@ fun TtoklipScreen(
             }
 
             composable(route = TtoklipScreenRoute.NOTICE.route) {
-                Text(text = "알림")
+                NoticeScreen(
+                    navigateToNoticeWriteScreen = {
+
+                    },
+                    showSheet = {
+
+                    }
+                )
             }
         }
 
