@@ -1,5 +1,6 @@
 package com.hgh.ttoklip_manger.presentation.ui.write
 
+import android.widget.Toast
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -26,6 +27,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
@@ -46,8 +48,7 @@ fun WriteScreen(
 ) {
     val viewState by viewModel.viewState.collectAsState()
     val focusManager = LocalFocusManager.current
-    var title by remember { mutableStateOf("") }
-    var content by remember { mutableStateOf("") }
+    val context = LocalContext.current
 
     Scaffold(
         topBar = {
@@ -69,8 +70,8 @@ fun WriteScreen(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 OutlinedTextField(
-                    value = title,
-                    onValueChange = { title = it },
+                    value = viewState.title,
+                    onValueChange = { viewModel.setEvent(WriteContract.WriteEvent.FillInTitle(it)) },
                     label = { Text("제목") },
                     modifier = Modifier
                         .fillMaxWidth()
@@ -86,8 +87,8 @@ fun WriteScreen(
                     )
                 )
                 OutlinedTextField(
-                    value = content,
-                    onValueChange = { content = it },
+                    value = viewState.content,
+                    onValueChange = { viewModel.setEvent(WriteContract.WriteEvent.FillInContent(it)) },
                     label = { Text("내용") },
                     modifier = Modifier
                         .fillMaxWidth()
@@ -105,13 +106,13 @@ fun WriteScreen(
             Spacer(modifier = Modifier.weight(1f))
             BasicButton(
                 text = "작성완료",
+                enabled = viewState.isOk,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(bottom = 12.dp, start = 16.dp, end = 16.dp),
                 textColor = Color.Black,
-
-                ) {
-
+            ) {
+                viewModel.setEvent(WriteContract.WriteEvent.OnClickWriteBtn)
             }
         }
 
@@ -122,6 +123,10 @@ fun WriteScreen(
             when (effect) {
                 WriteContract.WriteSideEffect.MoveBack -> {
                     onClose()
+                }
+
+                is WriteContract.WriteSideEffect.ToastMessage -> {
+                    Toast.makeText(context, effect.str, Toast.LENGTH_SHORT).show()
                 }
             }
         }

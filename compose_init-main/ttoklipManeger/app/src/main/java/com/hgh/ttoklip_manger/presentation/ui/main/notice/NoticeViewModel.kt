@@ -24,7 +24,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class NoticeViewModel @Inject constructor(
-    private val getNoticeGetPageUsecase: NoticeGetPageUsecase,
+    private val noticeGetPageUsecase: NoticeGetPageUsecase,
     private val noticePagingUsecase: NoticePagingUsecase,
     private val noticeGetDetailUsecase: NoticeGetDetailUsecase,
     private val noticeDeleteUsecase: NoticeDeleteUsecase,
@@ -69,7 +69,7 @@ class NoticeViewModel @Inject constructor(
     private fun getNotices() = viewModelScope.launch {
         updateState { copy(loadState = LoadState.LOADING) }
         try {
-            getNoticeGetPageUsecase(0).collect { result ->
+            noticeGetPageUsecase(0).collect { result ->
                 result.onSuccess {
                     updateState { copy(loadState = LoadState.SUCCESS, notices = it.notices) }
                 }.onFail {
