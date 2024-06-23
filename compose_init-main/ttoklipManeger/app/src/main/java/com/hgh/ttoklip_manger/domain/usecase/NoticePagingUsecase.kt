@@ -9,7 +9,7 @@ import com.hgh.ttoklip_manger.domain.repository.NoticeRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class NoticeGetPage2Usecase @Inject constructor(
+class NoticePagingUsecase @Inject constructor(
     private val repository: NoticeRepository
 ) {
     operator fun invoke() : Flow<PagingData<Notice>> {

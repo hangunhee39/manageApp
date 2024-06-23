@@ -9,5 +9,4 @@ interface NewsService {
     @GET("/api/v1/newsletters/posts")
     suspend fun getNewsMainApi(): Response<ApiResponseBody<MainNewsResponseDto>>
 
-
 }
