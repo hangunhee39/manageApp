@@ -36,7 +36,7 @@ import com.hgh.ttoklip_manger.presentation.component.StateLoading
 import com.hgh.ttoklip_manger.presentation.theme.Gray200
 import com.hgh.ttoklip_manger.presentation.theme.Gray300
 import com.hgh.ttoklip_manger.presentation.theme.Gray900
-import com.hgh.ttoklip_manger.presentation.theme.PlanzTypography
+import com.hgh.ttoklip_manger.presentation.theme.Typography
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -124,7 +124,7 @@ fun ManageTabRow(
                     Text(
                         maxLines = 1,
                         text = stringResource(id = menu.textId),
-                        style = PlanzTypography.labelMedium,
+                        style = Typography.labelMedium,
                         color = Color.Unspecified,
 
                         )

@@ -32,7 +32,7 @@ fun AppTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable ()
 
     MaterialTheme(
         colorScheme = colors,
-        typography = PlanzTypography,
+        typography = Typography,
         shapes = Shapes,
         content = content
     )

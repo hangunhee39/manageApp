@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import com.hgh.ttoklip_manger.R
 import com.hgh.ttoklip_manger.presentation.theme.Gray500
 import com.hgh.ttoklip_manger.presentation.theme.MainPurple900
-import com.hgh.ttoklip_manger.presentation.theme.PlanzTypography
+import com.hgh.ttoklip_manger.presentation.theme.Typography
 
 
 @Composable
@@ -44,7 +44,7 @@ fun StateError(
             Text(
                 text = stringResource(id = R.string.error_tex),
                 color = Gray500,
-                style = PlanzTypography.bodyMedium,
+                style = Typography.bodyMedium,
             )
 
             if (retryVisible) {
@@ -71,7 +71,7 @@ fun StateError(
 
                         Text(
                             text = stringResource(R.string.retry_button_title),
-                            style = PlanzTypography.labelSmall,
+                            style = Typography.labelSmall,
                         )
                     }
                 }

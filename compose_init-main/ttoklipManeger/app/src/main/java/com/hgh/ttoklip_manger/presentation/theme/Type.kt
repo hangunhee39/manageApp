@@ -15,7 +15,7 @@ val Pretendard = FontFamily(
     Font(R.font.pretendard_regular, FontWeight.Normal)
 )
 
-val PlanzTypography = Typography(
+val Typography = Typography(
     displayLarge = TextStyle(
         fontFamily = Pretendard,
         fontWeight = FontWeight.Bold,

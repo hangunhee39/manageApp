@@ -11,18 +11,19 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.scopes.ViewModelScoped
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object RepositoryModule {
 
     @Provides
-    @ViewModelScoped
+    @Singleton
     fun providesNewsRepository(api: NewsService): NewsRepository =
         NewsRepositoryImpl(api)
 
     @Provides
-    @ViewModelScoped
+    @Singleton
     fun providesNoticeRepository(api: NoticeService): NoticeRepository =
         NoticeRepositoryImpl(api)
 

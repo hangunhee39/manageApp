@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.dp
 import com.hgh.ttoklip_manger.R
 import com.hgh.ttoklip_manger.presentation.component.type.AppBarMenu
 import com.hgh.ttoklip_manger.presentation.theme.Gray900
-import com.hgh.ttoklip_manger.presentation.theme.PlanzTypography
+import com.hgh.ttoklip_manger.presentation.theme.Typography
 
 @Composable
 fun CreateAppBar(
@@ -91,7 +91,7 @@ private fun MainAppBar(
                 .fillMaxWidth()
                 .align(Alignment.Center),
             textAlign = TextAlign.Center,
-            style = PlanzTypography.bodyLarge,
+            style = Typography.bodyLarge,
             color = Gray900,
             maxLines = 1,
         )
