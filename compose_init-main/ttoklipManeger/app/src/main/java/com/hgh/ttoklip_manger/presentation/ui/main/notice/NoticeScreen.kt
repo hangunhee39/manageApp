@@ -1,5 +1,6 @@
 package com.hgh.ttoklip_manger.presentation.ui.main.notice
 
+import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -13,8 +14,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
@@ -33,7 +32,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.graphics.Color.Companion.White
@@ -57,19 +55,21 @@ import com.hgh.ttoklip_manger.presentation.component.StateLoading
 import com.hgh.ttoklip_manger.presentation.theme.Gray200
 import com.hgh.ttoklip_manger.presentation.theme.Gray500
 import com.hgh.ttoklip_manger.presentation.theme.Typography
+import com.hgh.ttoklip_manger.presentation.ui.main.TtoklipContract
+import com.hgh.ttoklip_manger.presentation.ui.main.TtoklipViewModel
+import com.hgh.ttoklip_manger.presentation.utill.composableActivityViewModel
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NoticeScreen(
+    mainViewModel: TtoklipViewModel = composableActivityViewModel(),
     viewModel: NoticeViewModel = hiltViewModel(),
     navigateToNoticeWriteScreen: () -> Unit,
-    showSheet: () -> Unit,
 ) {
     val viewState by viewModel.viewState.collectAsState()
     val coroutineScope = rememberCoroutineScope()
     val sheetState = rememberModalBottomSheetState()
-
 
     val notices = viewModel.notices.collectAsLazyPagingItems()
 
@@ -93,7 +93,7 @@ fun NoticeScreen(
                         title = stringResource(id = R.string.notice_manager),
                         logoId = R.drawable.ic_logo_
                     ) {
-
+                        viewModel.setEvent(NoticeContract.NoticeEvent.OnClickWriteButton)
                     }
                 }
             ) { padding ->
@@ -118,9 +118,14 @@ fun NoticeScreen(
                     onDismissRequest = { coroutineScope.launch { sheetState.hide() } },
                     sheetState = sheetState,
                 ) {
-                    NoticeBottomSheet(viewState.noticeDetail) {
-
-                    }
+                    NoticeBottomSheet(viewState.noticeDetail,
+                        onClose = {
+                            coroutineScope.launch { sheetState.hide() }
+                        },
+                        onDelete = { noticeId ->
+                            viewModel.setEvent(NoticeContract.NoticeEvent.OnDeleteNotice(noticeId))
+                        }
+                    )
                 }
             }
         }
@@ -128,11 +133,23 @@ fun NoticeScreen(
     LaunchedEffect(key1 = viewModel.effect) {
         viewModel.effect.collect { effect ->
             when (effect) {
-                NoticeContract.NoticeSideEffect.NavigateToCreateScreen -> {
+                NoticeContract.NoticeSideEffect.NavigateToWriteScreen -> {
+                    navigateToNoticeWriteScreen()
                 }
 
                 is NoticeContract.NoticeSideEffect.ShowBottomSheet -> {
                     coroutineScope.launch { sheetState.show() }
+                }
+            }
+        }
+    }
+
+    LaunchedEffect(key1 = mainViewModel.effect) {
+        mainViewModel.effect.collect { effect ->
+            when (effect) {
+                is TtoklipContract.TtoklipSideEffect.RefreshScreen -> {
+                    Log.d("메인으로","InitNoticeScreen")
+                    viewModel.setEvent(NoticeContract.NoticeEvent.InitNoticeScreen)
                 }
             }
         }
@@ -213,6 +230,7 @@ fun NoticeItem(
 @Composable
 fun NoticeBottomSheet(
     noticeDetail: NoticeDetail,
+    onClose: () -> Unit,
     onDelete: (Int) -> Unit,
 ) {
     Column {
@@ -249,7 +267,7 @@ fun NoticeBottomSheet(
                         .padding(horizontal = 4.dp, vertical = 4.dp)
                         .clip(RoundedCornerShape(30.dp))
                         .align(Alignment.Top)
-                        .clickable { },
+                        .clickable { onClose() },
 
                     )
             }
@@ -274,7 +292,8 @@ fun NoticeBottomSheet(
                     .fillMaxWidth(),
                 buttonColor = Color.Red
             ) {
-
+                onDelete(noticeDetail.noticeId)
+                onClose()
             }
         }
 

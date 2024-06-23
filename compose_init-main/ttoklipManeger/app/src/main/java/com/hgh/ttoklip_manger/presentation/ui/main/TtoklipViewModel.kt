@@ -7,10 +7,12 @@ import javax.inject.Inject
 @HiltViewModel
 class TtoklipViewModel @Inject constructor(
 
-) : BaseViewModel<TtoklipContract.TtoklipViewState, TtoklipContract.TtoklipSideEffect, TtoklipContract.TtoklipEvent, >(
+) : BaseViewModel<TtoklipContract.TtoklipViewState, TtoklipContract.TtoklipSideEffect, TtoklipContract.TtoklipEvent>(
     TtoklipContract.TtoklipViewState
 ) {
     override fun handleEvents(event: TtoklipContract.TtoklipEvent) {
-        TODO("Not yet implemented")
+        when (event) {
+            TtoklipContract.TtoklipEvent.FinishedWriteActivity -> sendEffect({ TtoklipContract.TtoklipSideEffect.RefreshScreen })
+        }
     }
 }

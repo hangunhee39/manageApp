@@ -31,6 +31,7 @@ fun BasicButton(
         onClick = { onClick() },
         colors = ButtonDefaults.buttonColors(
             containerColor = buttonColor,
+            disabledContentColor = Gray500
         ),
         elevation = null,
     ) {

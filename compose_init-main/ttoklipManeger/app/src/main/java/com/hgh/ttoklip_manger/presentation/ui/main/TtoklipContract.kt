@@ -9,10 +9,10 @@ class TtoklipContract {
     object TtoklipViewState: ViewState
 
     sealed class TtoklipSideEffect :ViewSideEffect {
-
+        object RefreshScreen : TtoklipSideEffect()
     }
 
     sealed class TtoklipEvent : ViewEvent {
-
+        object FinishedWriteActivity : TtoklipEvent()
     }
 }

@@ -37,11 +37,14 @@ import com.hgh.ttoklip_manger.presentation.theme.Gray200
 import com.hgh.ttoklip_manger.presentation.theme.Gray300
 import com.hgh.ttoklip_manger.presentation.theme.Gray900
 import com.hgh.ttoklip_manger.presentation.theme.Typography
+import com.hgh.ttoklip_manger.presentation.ui.main.TtoklipViewModel
+import com.hgh.ttoklip_manger.presentation.utill.composableActivityViewModel
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun NewsScreen(
+    mainViewModel: TtoklipViewModel = composableActivityViewModel(),
     viewModel: NewsViewModel = hiltViewModel(),
     navigateToCreateNewsScreen: (Int) -> Unit,
     showBottomSheet: () -> Unit,

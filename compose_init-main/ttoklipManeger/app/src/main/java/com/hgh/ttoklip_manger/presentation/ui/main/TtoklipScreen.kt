@@ -69,10 +69,9 @@ import kotlinx.coroutines.launch
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun TtoklipScreen(
-    viewModel: TtoklipViewModel = hiltViewModel(),
+    intentToWrite: () -> Unit,
     navController: NavHostController = rememberNavController(),
 ) {
-    val viewState by viewModel.viewState.collectAsState()
     var bottomBarState by rememberSaveable { mutableStateOf(true) }
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
@@ -127,10 +126,7 @@ fun TtoklipScreen(
             composable(route = TtoklipScreenRoute.NOTICE.route) {
                 NoticeScreen(
                     navigateToNoticeWriteScreen = {
-
-                    },
-                    showSheet = {
-
+                        intentToWrite()
                     }
                 )
             }

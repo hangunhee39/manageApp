@@ -16,14 +16,15 @@ class NoticeContract {
     ): ViewState
 
     sealed class NoticeSideEffect :ViewSideEffect {
-        object NavigateToCreateScreen : NoticeSideEffect()
+        object NavigateToWriteScreen : NoticeSideEffect()
         data class ShowBottomSheet(val id : Int) : NoticeSideEffect()
     }
 
     sealed class NoticeEvent : ViewEvent {
         object InitNoticeScreen : NoticeEvent()
-        object OnClickCreateButton : NoticeEvent()
+        object OnClickWriteButton : NoticeEvent()
         data class OnClickNotice(val id : Int) : NoticeEvent()
+        data class OnDeleteNotice(val id: Int) : NoticeEvent()
 
     }
 }
