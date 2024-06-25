@@ -11,4 +11,5 @@
 
 ## 아키텍처
 - Clean Architecture
-- MVI
+- MVVM + MVI
+<img width="767" alt="manageApp_arch" src="https://github.com/hangunhee39/manageApp/assets/77563098/d10cb136-8371-415c-b1bb-672d19b09f8c">
