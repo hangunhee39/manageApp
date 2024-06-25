@@ -1,5 +1,3 @@
-# manageApp
-
 ## 사용 기술 및 데이터
 - 언어: Kotlin
 - UI제작: Compose
